@@ -1,2 +1,22 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    import Navbar from "$lib/Navbar.svelte";
+    import logo from '$lib/imgs/pfp.jpg';
+    $: outerWidth = 0
+	$: innerWidth = 0
+	$: outerHeight = 0
+	$: innerHeight = 0
+</script>
+
+<svelte:window bind:innerWidth bind:outerWidth bind:innerHeight bind:outerHeight />
+
+<Navbar />
+<div class="flex h-dvh w-dvh justify-center items-center bg-gradient-to-r from-purple-700 to-indigo-700">
+    <img class="border-8 border-yellow-200 object-cover rounded-full h-1/2 w-auto" alt="Profile: The Portrait by Magritte" src={logo} />
+    <div class="ml-10">
+        <h1 class="text-8xl font-bold text-sky-300 mb-10 font-dm-sans">Figsups</h1>
+        <p class="text-2xl text-white font-dm-sans">Hello! I'm <strong class="text-yellow-400">Saketh</strong>, a Junior at High Technology High School.
+                    <br>I mainly work in Python (AI/ML), but I also have experience in 
+                    <br>Web/App Development, and C/C++. Explore this website to see
+                    <br>my projects, blogs, and contact information!</p>
+    </div>
+</div>
