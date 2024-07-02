@@ -1,6 +1,6 @@
 <script>
     import Navbar from "$lib/Navbar.svelte";
-    import logo from '$lib/imgs/pfp.jpg';
+    import logo from '$lib/imgs/pfp.webp';
     $: outerWidth = 0
 	$: innerWidth = 0
 	$: outerHeight = 0
