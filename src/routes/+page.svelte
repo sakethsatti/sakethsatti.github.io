@@ -1,26 +1,48 @@
 <script>
     import Navbar from "$lib/Navbar.svelte";
     import logo from '$lib/imgs/pfp.webp';
+    import loading from '$lib/imgs/loading.gif';
     import ArrowDown from 'virtual:icons/mdi/arrow-down';
     import About from 'virtual:icons/mdi/about';
     import GearOutline from 'virtual:icons/mdi/gear-outline';
     import NewPage from 'virtual:icons/mdi/arrow-top-right-bold-box-outline';
     import Blog from 'virtual:icons/mdi/chat-bubble-outline';
+    import { fly } from 'svelte/transition';
+    import { onMount } from 'svelte';
+    import cLogo from '$lib/imgs/C.png';
+    import cppLogo from '$lib/imgs/C++.png';
+    import jLogo from '$lib/imgs/Java.svg';
+    import pyLogo from '$lib/imgs/python.png';
+    import torchLogo from '$lib/imgs/Pytorch.png';
+    import reactLogo from '$lib/imgs/react.png';
+    import svelteLogo from '$lib/imgs/svelte.png';
+
+    let loaded = false;
+    let isInView = false;
 
     $: outerWidth = 0
 	$: innerWidth = 0
 	$: outerHeight = 0
 	$: innerHeight = 0
+
+    onMount(() => {
+        setTimeout(() => {
+            loaded = true;
+        }, 100);
+    })
+
 </script>
 
 <title>Figsups</title>
 
 <svelte:window bind:innerWidth bind:outerWidth bind:innerHeight bind:outerHeight />
 
+
+{#if loaded}
 <Navbar />
 <div class="py-52 flex flex-col items-center bg-slate-200">
     <div class="w-2/3 mb-8">
-        <h1 class="font-dm-sans text-7xl mb-6">Welcome, I'm <strong class="text-sky-800">Figsups</strong></h1>
+        <h1 class="font-dm-sans text-6xl mb-6">Welcome, I'm <strong class="text-sky-800">Figsups</strong></h1>
         <h1 class="font-dm-sans text-4xl text-slate-700">AI Researcher. Software Developer. Problem Solver.</h1>
     </div>
     {#if outerWidth > 850}
@@ -31,10 +53,12 @@
                 <h1 class="flex font-dm-sans items-center text-2xl">Introduction<ArrowDown /></h1>
             </div>
             </a>
+            <a href="/projects">
             <div class="flex flex-col shadow-xl items-center justify-center bg-violet-400 rounded-lg p-4 mr-10 hover:shadow-2xl">
                 <GearOutline class="text-9xl mb-2"/>
                 <h1 class="flex font-dm-sans items-center text-2xl">Projects<NewPage /></h1>
             </div>
+            </a>
             <div class="flex flex-col shadow-xl items-center justify-center bg-violet-500 rounded-lg p-4 mr-10 hover:shadow-2xl">
                 <Blog class="text-9xl mb-2"/>
                 <h1 class="flex font-dm-sans items-center text-2xl">Posts<NewPage /></h1>
@@ -48,22 +72,24 @@
                 <h1 class="flex font-dm-sans items-center text-2xl">Introduction<ArrowDown /></h1>
             </div>
             </a>
+            <a href="/projects">
             <div class="flex flex-col shadow-xl items-center justify-center bg-violet-400 rounded-lg p-4 mb-10 hover:shadow-2xl">
                 <GearOutline class="text-9xl mb-2"/>
                 <h1 class="flex font-dm-sans items-center text-2xl">Projects<NewPage /></h1>
             </div>
+            </a>
             <div class="flex flex-col shadow-xl items-center justify-center bg-violet-500 rounded-lg p-4 mb-10 hover:shadow-2xl">
                 <Blog class="text-9xl mb-2"/>
                 <h1 class="flex font-dm-sans items-center text-2xl">Posts<NewPage /></h1>
             </div>
         </div>
-    {/if}    
+    {/if}   
 </div>
 
 
 <div class="py-52 flex flex-col justify-center items-center bg-slate-100">
     <a id="Introduction"> </a>
-    <div class="w-2/3">
+    <div class="w-2/3 mb-10">
         <h1 class="font-bold text-slate-700 mb-2">INTRODUCTION</h1>
         <div class="flex items-center mb-6">
             <img class="shadow-2xl mr-4 rounded-full border-2 border-sky-500 h-20 w-20" src={logo} alt="The Portrait by Magritte"/>
@@ -76,6 +102,24 @@
         <p class="text-xl text-black font-dm-sans mb-6">
             Explore this website to see my projects, posts, and contact info!
         </p>
+    </div>
+    
+    <div class="w-2/3">
+        <h1 class="font-bold text-slate-700">TECHNOLOGIES</h1>
+        <div class="flex flex-wrap gap-10 m-2 items-center">
+            <img src={cLogo} class="h-18 w-16" alt="C Logo"/>
+            <img src={cppLogo} class="h-18 w-16" alt="C++ Logo"/>
+            <img src={jLogo} class="h-18 w-16" alt="Java Logo"/>
+            <img src={pyLogo} class="h-18 w-16" alt="Python Logo"/>
+            <img src={torchLogo} class="h-18 w-16" alt="PyTorch Logo"/>
+            <img src={reactLogo} class="h-18 w-16" alt="React Logo"/>
+            <img src={svelteLogo} class="h-18 w-16" alt="React Logo"/>
 
+        </div>    
     </div>
 </div>
+{:else}
+    <div class="flex h-screen items-center justify-center">
+        <img class="size-8" src={loading} alt={'loading screen'}/>
+    </div>
+{/if}
