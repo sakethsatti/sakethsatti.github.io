@@ -67,7 +67,7 @@
 
 <title>Saketh Satti | Projects</title>
 
-<div class="py-32 px-20 font-dm-sans">
+<div class="py-20 px-20 font-dm-sans">
     <h1 class="text-4xl mb-4">Projects</h1>
     <p class="text-2xl">These are some of the projects I have completed/am still working on.</p>
     <div class="flex flex-wrap gap-10 my-10">

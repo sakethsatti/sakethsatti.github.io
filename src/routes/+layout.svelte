@@ -5,17 +5,18 @@
     import loading from '$lib/imgs/loading.gif';
 
     let loaded = false;
+    let darkMode = true;
 
     onMount(() => {
         setTimeout(() => {
             loaded = true;
         }, 100);
     })
+
 </script>
-{#if loaded}
+{#if loaded}    
     <Navbar />
     <slot />
-    
 {:else}
     <div class="flex h-screen items-center justify-center">
         <img class="size-8" src={loading} alt={'loading screen'}/>
